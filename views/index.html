@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover fun and educational activities for kids of all ages to help bust boredom with our tailored recommendations.">
+    <meta name="keywords" content="kids activities, educational games, children entertainment, family fun, home activities">
+    <meta name="author" content="BoredKids">
+
+        <!-- Apple specific tags for home screen apps -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="BoredKids">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://boredkids.app/">
+    <meta property="og:title" content="BoredKids">
+    <meta property="og:description" content="Discover fun and educational activities for kids of all ages to help bust boredom with our tailored recommendations.">
+    <meta property="og:image" content="https://boredkids.app/images/preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://boredkids.app/">
+    <meta property="twitter:title" content="BoredKids">
+    <meta property="twitter:description" content="Discover fun and educational activities for kids of all ages to help bust boredom with our tailored recommendations.">
+    <meta property="twitter:image" content="https://boredkids.app/images/preview.jpg">
+
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <title>BoredKids</title>
+</head>
+<body>
+    <div class="container">
+        <h1>BoredKids</h1>
+        <div id="response" class="response-container">
+            <h2>Are your kids bored at home?</h2>
+            <h4>Get fun activity recommendations to keep them engaged</h4>
+        </div>
+        <form id="mainForm" method="POST" action="/recommendations">
+            <input id="mainCTA" type="submit" value="✨ Get Recommendation">
+            <a id="customizeLink" href="javascript:void(0);" class="customize-link" onclick="toggleCustomize()">Customize options</a>
+            <div id="custom-options" class="custom-options" style="display: none;">
+                <!-- Insert form groups for selecting age, time, interests, and play options -->
+                <div class="form-group">
+                <label for="kidsAge">Kids Age:</label>
+                <select name="kidsAge" id="kidsAge">
+                  <option value="">--Please choose an option--</option>
+                  <option value="less than 2 years"> Less than 2 years</option>
+                  <option value="2 to 4 years">2 to 4 years</option>
+                  <option value="4 to 8 years">4 to 8 years</option>
+                  <option value="9 to 12 years">9 to 12 years</option>
+                  <option value="12+ years">12+ years</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="timeAvailable">Time Available:</label>
+                <select id="timeAvailable" name="timeAvailable">
+                  <option value="30 mins">30 mins</option>
+                  <option value="1-2 hours">1-2 hours</option>
+                  <option value="2-4 hours">2-4 hours</option>
+                  <option value="4+ hours">4+ hours</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="interests">Interests:</label>
+                <select id="interests" name="interests">
+                  <option value="">--Please choose an option--</option>
+                  <option value="Arts & Crafts">Arts & Crafts</option>
+                  <option value="Board Games & Puzzles">Board Games & Puzzles</option>
+                  <option value="Building & Constructing">Building & Constructing</option>
+                  <option value="Drama & Acting">Drama & Acting</option>
+                  <option value="Lego">Lego</option>
+                  <option value="Music & Dance">Music & Dance</option> 
+                  <option value="Reading & Story Telling">Reading & Story Telling</option>
+                  <option value="Sports & Physical games">Sports & Physical games</option>                 
+                  <option value="Science Experiments">Science Experiments</option>
+                  <option value="Outdoor Adventure">Outdoor Adventure</option>                 
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="playWith">Play with:</label>
+                <select id="playWith" name="playWith">
+                <option value="">--Please choose an option--</option>
+                  <option value="self-play">Self play</option>
+                  <option value="sibling">Sibling(s)</option>
+                  <option value="friends">Friends</option>
+                  <option value="parent">Parent(s)</option>                
+                </select>
+              </div>
+
+            </div>
+        </form>
+    </div>
+    <script src="/script.js"></script>
+</body>
+<footer style="padding: 20px; text-align: center; margin-top: 20px; font-size: 0.9em;">
+    <p>Made with 💜 by <a href="https://twitter.com/athahar" target="_blank">@athahar</a></p>
+    <p>&copy; 2024 Bored Kids App. All rights reserved.</p>
+</footer>
+</html>

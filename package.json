@@ -1,0 +1,36 @@
+{
+  "name": "boredkids-app",
+  "version": "1.0.0",
+  "description": "A Node.js app to provide fun and educational activities for kids based on various parameters using the OpenAI API.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/boredkids-app.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "OpenAI",
+    "Educational",
+    "Kids Activities"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yourusername/boredkids-app/issues"
+  },
+  "homepage": "https://github.com/yourusername/boredkids-app#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "openai": "^4.40.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
