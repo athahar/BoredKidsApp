@@ -16,6 +16,9 @@ const openai = new OpenAI({
  * @returns {Promise<string>} - The generated activity suggestion.
  */
 async function getResponse(kidsAge, timeAvailable, interests, playWith) {
+
+  
+
     console.log('Calling getResponse with:', { kidsAge, timeAvailable, interests, playWith });
     try {
         const prompt = `Generate the most fun, creative at-home activity for children to do when bored for the age ${kidsAge} and 
@@ -23,21 +26,7 @@ async function getResponse(kidsAge, timeAvailable, interests, playWith) {
     It should return these elements ONLY formatted in HTML syntax, but provide inside a <div>, that can be embedded in the html page - the title of the activity, 
     items needed, time for the activity, fun score and a messy score and a description of the activity 
     in steps. The fun score and messy score should be out of 5, and formatted example as: 3/5. 
-    Activity title should be fun, kid-friendly and feel exciting.`;
-
-        console.log('Generated prompt:', prompt);
-         // const response = await openai.createCompletion({
-         //    model: "gpt-3.5-turbo",
-         //    max_tokens: 500,
-         //    messages: [{role: "user", content: prompt}]
-         //  }).catch((err)=>console.log(err.response));
-
-        //  const response = await openai.createCompletion({
-        //     model: "gpt-3.5-turbo",  // Adjust model ID based on the one you are licensed to use
-        //     prompt: prompt,
-        //     max_tokens: 500,
-        //     temperature: 0.7  // Add temperature if needed, or other parameters like stop sequences
-        // });
+    Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title".`;
 
 
         const response = await openai.chat.completions.create({
@@ -61,3 +50,5 @@ module.exports = {
 
 
 //const prompt = `Generate a fun activity for kids aged ${kidsAge} with ${timeAvailable} available focusing on ${interests} and involving ${playWith}.`;
+
+

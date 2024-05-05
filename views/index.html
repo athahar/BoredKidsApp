@@ -31,19 +31,21 @@
     <link rel="stylesheet" type="text/css" href="/styles.css">
     <title>BoredKids</title>
 </head>
-<body>
-    <div class="container">
+<body>    
         <h1>BoredKids</h1>
-        <div id="response" class="response-container">
+        <div class="container">
+          <div id="response" class="response-container">
+          <center>
             <h2>Are your kids bored at home?</h2>
-            <h4>Get fun activity recommendations to keep them engaged</h4>
-        </div>
-        <form id="mainForm" method="POST" action="/recommendations">
+            <h4> Get fun activity recommendations to keep them engaged</h4> 
+          <center>
+          </div>
+          <center>
+          <form id="mainForm" method="POST" action="/recommendations">
             <input id="mainCTA" type="submit" value="✨ Get Recommendation">
-            <a id="customizeLink" href="javascript:void(0);" class="customize-link" onclick="toggleCustomize()">Customize options</a>
+            <a id="customizeLink" href="javascript:void(0);" id="customize-options" class="customize-link" onclick="toggleCustomize()">Customize options</a>           
             <div id="custom-options" class="custom-options" style="display: none;">
-                <!-- Insert form groups for selecting age, time, interests, and play options -->
-                <div class="form-group">
+              <div class="form-group">
                 <label for="kidsAge">Kids Age:</label>
                 <select name="kidsAge" id="kidsAge">
                   <option value="">--Please choose an option--</option>
@@ -57,6 +59,7 @@
               <div class="form-group">
                 <label for="timeAvailable">Time Available:</label>
                 <select id="timeAvailable" name="timeAvailable">
+                  <option value="">--Please choose an option--</option>
                   <option value="30 mins">30 mins</option>
                   <option value="1-2 hours">1-2 hours</option>
                   <option value="2-4 hours">2-4 hours</option>
@@ -67,16 +70,17 @@
                 <label for="interests">Interests:</label>
                 <select id="interests" name="interests">
                   <option value="">--Please choose an option--</option>
-                  <option value="Arts & Crafts">Arts & Crafts</option>
-                  <option value="Board Games & Puzzles">Board Games & Puzzles</option>
-                  <option value="Building & Constructing">Building & Constructing</option>
-                  <option value="Drama & Acting">Drama & Acting</option>
-                  <option value="Lego">Lego</option>
-                  <option value="Music & Dance">Music & Dance</option> 
-                  <option value="Reading & Story Telling">Reading & Story Telling</option>
-                  <option value="Sports & Physical games">Sports & Physical games</option>                 
-                  <option value="Science Experiments">Science Experiments</option>
-                  <option value="Outdoor Adventure">Outdoor Adventure</option>                 
+                  <option value="Incredible Arts & Crafts">Arts & Crafts</option>
+                  <option value="Amazing Board Games & Puzzles">Board Games & Puzzles</option>
+                  <option value="Exhilarating Building & Constructing">Building & Constructing</option>
+                  <option value="Captivating Drama & Acting">Drama & Acting</option>
+                  <option value="Exhilarating Lego">Lego</option>
+                  <option value="Marvelous Music & Dance">Music & Dance</option> 
+                  <option value="Incredible Reading & Story Telling">Reading & Story Telling</option>
+                  <option value="Breathtaking Sports & Physical games">Sports & Physical games</option>
+                  <option value="Captivating STEM activity">STEM activity</option>
+                  <option value="Captivating Science Experiments">Science Experiments</option>
+                  <option value="Thrilling Outdoor Adventure">Outdoor Adventure</option>         
                 </select>
               </div>
               <div class="form-group">
@@ -85,18 +89,27 @@
                 <option value="">--Please choose an option--</option>
                   <option value="self-play">Self play</option>
                   <option value="sibling">Sibling(s)</option>
-                  <option value="friends">Friends</option>
+                  <option value="friends">Friend(s)</option>
                   <option value="parent">Parent(s)</option>                
                 </select>
               </div>
-
             </div>
-        </form>
-    </div>
+          </form>
+
+          </center>
+          
+        </div>
     <script src="/script.js"></script>
 </body>
 <footer style="padding: 20px; text-align: center; margin-top: 20px; font-size: 0.9em;">
     <p>Made with 💜 by <a href="https://twitter.com/athahar" target="_blank">@athahar</a></p>
     <p>&copy; 2024 Bored Kids App. All rights reserved.</p>
+
+    <div class="save-app-btn">
+      <button id="saveAppBtn">Save this as app, on your phone</button>
+      <div id="instructionPopover" style="display:none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 10px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000;">
+        <p>To add this app to your home screen: tap <img src="/icons/share-icon.png" alt="Share Icon" style="width: 20px; vertical-align: middle;"> then 'Add to Home Screen'</p>
+      </div>
+    </div> 
 </footer>
 </html>
