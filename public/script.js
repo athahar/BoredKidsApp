@@ -1,6 +1,8 @@
 function toggleCustomize() {
     var customOptions = document.getElementById('custom-options');
-    customOptions.style.display = customOptions.style.display === 'block' ? 'none' : 'block';
+    var linkText = document.getElementById('customizeLink');
+    customOptions.style.display = customOptions.style.display === 'inline' ? 'none' : 'inline';
+    linkText.textContent= linkText.textContent === 'more options' ? 'hide options' : 'more options';
 }
 
 
@@ -13,8 +15,14 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
      // Disable the submit button and hide the customize link
     const submitButton = document.getElementById('mainCTA');
     const customizeLink = document.getElementById('customizeLink');
+    const mainFormDiv = document.getElementById('mainFormDiv');
+    const headlineText = document.getElementById('headlineText');
+    
+
     submitButton.disabled = true;
     customizeLink.style.display = 'none'; // Hide the customize link
+    mainFormDiv.style.display = 'none'; // Hide the main form div
+    headlineText.style.display = 'none';
 
 
     const kidsAge = document.getElementById('kidsAge').value;
@@ -23,8 +31,9 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
     const playWith = document.getElementById('playWith').value;
     
     const responseDiv = document.getElementById('response');
-    responseDiv.innerHTML = '<p class="feedback" style="font-size:1em;"><img src=""/>Scavenger hunting for fun...</p>';
-    
+    responseDiv.innerHTML = '<p class="feedback" style="font-size:1.4em; padding:80px 0px 160px 0px;"><img src="fidgetspinner.gif"/><br>Scavenger hunting for fun...</p>';
+
+
     const response = await fetch('/recommendations', {
       method: 'POST',
       headers: {
@@ -38,11 +47,36 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
     // Re-enable the button and show the customize link again
     submitButton.disabled = false;
     customizeLink.style.display = ''; // Show the customize link
+    mainFormDiv.style.display = ''; // Show the main form div
 
 
     
     responseDiv.innerHTML = data;
   });
+
+
+// adjustable width of select
+
+function adjustSelectWidth() {
+  var customSelects = document.querySelectorAll('.custom-select');
+  customSelects.forEach(function(select) {
+    var selectedOption = select.options[select.selectedIndex];
+    var tempSpan = document.createElement("span");
+    tempSpan.textContent = selectedOption.textContent;
+    tempSpan.style.visibility = "hidden";
+    document.body.appendChild(tempSpan);
+    select.style.width = tempSpan.offsetWidth + 52 + "px";
+    document.body.removeChild(tempSpan);
+  });
+}
+
+// Call adjustSelectWidth() initially for all elements with the custom-select class
+adjustSelectWidth();
+
+// Add event listener to each custom select for change event
+document.querySelectorAll('.custom-select').forEach(function(select) {
+  select.addEventListener('change', adjustSelectWidth);
+});
 
 
 
@@ -55,4 +89,6 @@ document.getElementById('saveAppBtn').addEventListener('click', function() {
         popover.style.display = 'none';      
       }, 4000); // This will hide the popover after 4 seconds
     });
+
+
 
