@@ -33,13 +33,13 @@
 </head>
 <body>  
         <div class="header">  
-          <h1 class="appName">BoredKids</h1>
+          <h1 class="appName"><a href="https://boredkids.app/" style="text-decoration: none;color: #000;">BoredKids</a></h1>
         </div>
-        <div class="container">
+        <div id="container" class="container">
           <div id="response" class="response-container">
           </div>
           <div id="mainFormDiv">
-            <center>
+            <center style="padding-top: 40px;">
               <div id="headlineText" style="padding-top:40px;">
                 <h1>Spot a bored kid?</h1>
               </div>
@@ -111,11 +111,18 @@
     <p>Made with 💛 by <a href="https://twitter.com/athahar" target="_blank">@athahar</a></p>
     <p>&copy; 2024 BoredKids App. All rights reserved.</p>
 
-    <div class="save-app-btn">
-      <button id="saveAppBtn">Save this app on my phone</button>
-      <div id="instructionPopover" style="display:none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 10px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000;">
-        <p>To add this app to your home screen: tap <img src="/icons/share-icon.png" alt="Share Icon" style="width: 20px; vertical-align: middle;"> then 'Add to Home Screen'</p>
-      </div>
-    </div> 
+    <div style="margin:48px 0px;">
+        <div class="save-app-btn" style="margin-bottom:24px;">
+            <a href="" id="saveAppBtn">Save app on phone</a>
+            <div id="instructionPopover" style="display:none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 10px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000;">
+              <p>To add this app to your home screen: tap 
+                <img src="/icons/share-icon.png" alt="Share Icon" style="width: 20px; vertical-align: middle;"> 
+              then 'Add to Home Screen'
+              </p>
+            </div>
+        </div>
+        <a href="mailto:boredkidsapp@gmail.com" id="email"  target="_blank">Send feedback</a>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="boredkids" data-color="#000000" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
 </footer>
 </html>

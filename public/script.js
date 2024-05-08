@@ -18,11 +18,11 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
     const mainFormDiv = document.getElementById('mainFormDiv');
     const headlineText = document.getElementById('headlineText');
     
-
     submitButton.disabled = true;
     customizeLink.style.display = 'none'; // Hide the customize link
     mainFormDiv.style.display = 'none'; // Hide the main form div
     headlineText.style.display = 'none';
+    document.getElementById('container').style.minHeight = 'auto';
 
 
     const kidsAge = document.getElementById('kidsAge').value;

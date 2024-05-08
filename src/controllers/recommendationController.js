@@ -15,11 +15,11 @@ const formatResponse = (response) => {
     const message = response.replace(/\n/g, '</p><p>');
     return `
         <div class="response-container">
-            <div><p style="font-size:1.2em; color: #666;">✨ Try this out</p></div>
+            <div><p style="font-size:1em; color: #666;">✨ Try this out</p></div>
             <p>${message}</p>
         </div>
         <hr>
-        <p class="feedback">Not interested in this activity? No problem! 
+        <p class="feedback">Not interested in this activity?
         Try customizing your options to get a new recommendation.</p>
     `;
 };

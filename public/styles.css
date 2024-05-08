@@ -118,8 +118,8 @@ select option:focus{
   cursor: pointer;
   display: block;
   font-size: 0.9em;
-  margin-bottom: 24px;
-  margin-top: 24px;
+  margin-bottom: 36px;
+  margin-top: 36px;
 }
 
 
@@ -145,12 +145,14 @@ select option:focus{
   width: 90%;
   max-width: 600px;
   margin-top: 2px;
+  min-height: 50%;
 }
 
 .response-container {
   max-width: 600px;
   padding: 10px;
   border-radius: 10px;
+  font-size: 1.03em;
 }
 
 .appName {
@@ -172,6 +174,14 @@ footer{
   color: #444;
 }
 
+.footer{
+  display:inline-block;
+}
+
 hr{
   color: #666;
+}
+
+.bmc-btn-container{
+      scale: 0.8;
 }
