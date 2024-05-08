@@ -1,10 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const session = require('express-session');
+const sessionConfig = require('./config/sessionConfig');
+
+
 const { logRequests, setHeaders, handleError } = require('./middleware');
 const recommendationRoutes = require('./routes/recommendationRoutes');
 
+
 const app = express();
+
+
+app.use(sessionConfig); // Apply session configuration globally
+
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

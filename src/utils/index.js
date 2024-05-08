@@ -40,7 +40,7 @@ async function getResponse(kidsAge, timeAvailable, interests, playWith, attempts
     // Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title".  Try count: ${attempts}`;
 
     if (attempts > 1) {
-        dislikePrev = "I dislike the previous suggestion of: " + prevActivityTitle + ", so please suggest a very different type of activity"        
+        dislikePrev = "I have these suggestion previously : " + prevActivityTitle + ", please suggest a very different type of activity"        
     }
 
     const randomWord = getRandomWord(); // Implement a function to get a random word
@@ -50,7 +50,7 @@ async function getResponse(kidsAge, timeAvailable, interests, playWith, attempts
     Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title", but should have a html id called activityTitle. 
     Try count: ${attempts}. ${dislikePrev} `;        
 
-    //console.log("prompt ------> : " + prompt);
+    console.log("prompt ------> : " + prompt);
 
         const response = await openai.chat.completions.create({
             messages: [{ role: "system", content: prompt }],

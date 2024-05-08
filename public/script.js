@@ -49,7 +49,7 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
 
 
    //tracking - only track prod events
-    if (window.location.hostname !== 'localhost') {
+    // if (window.location.hostname !== 'localhost') {
       const eventProperties = {
               kidsAge: kidsAge,
               timeAvailable: timeAvailable,
@@ -57,7 +57,7 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
               playWith: playWith
           };
           window.amplitude.track('Search recommendations', eventProperties);
-    }
+    // }
 
     
     const responseDiv = document.getElementById('response');

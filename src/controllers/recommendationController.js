@@ -57,11 +57,55 @@ function getRandomOptions() {
 }
 
 
+// exports.handleRecommendation = async (req, res) => {
+//     try {
+//         let { kidsAge, timeAvailable, interests, playWith, attempts, prevActivityTitle } = req.body;
+
+//          // Generate random options if necessary
+//         if (!kidsAge || !interests || !playWith) {
+//             const randomOptions = getRandomOptions();
+//             kidsAge = kidsAge || randomOptions.age;  // Use provided or random age
+//             interests = interests || randomOptions.interest;  // Use provided or random interest
+//             playWith = playWith || randomOptions.playWith;  // Use provided or random play with option
+//         }
+
+//                 // Use a default for time available if not provided
+//         timeAvailable = timeAvailable || '1-2 hours';
+
+//         console.log("prevActivityTitle: " + prevActivityTitle);
+
+//         const response = await getResponse(kidsAge, timeAvailable, interests, playWith, attempts, prevActivityTitle);
+//         const formattedResponse = formatResponse(response);
+//         res.setHeader('Content-Type', 'text/html');
+//         res.send(formattedResponse);
+//     } catch (error) {
+//         console.error('Error handling recommendation:', error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// };
+
+
 exports.handleRecommendation = async (req, res) => {
     try {
-        let { kidsAge, timeAvailable, interests, playWith, attempts, prevActivityTitle } = req.body;
 
-         // Generate random options if necessary
+        let { kidsAge, timeAvailable, interests, playWith, prevActivityTitle } = req.body;
+
+        if (!req.session.attempts) {
+            req.session.attempts = 0;  // Initialize attempts if not already done
+        }
+        req.session.attempts += 1;  // Increment the attempt count
+
+        if (!req.session.prevActivityTitles) {
+            req.session.prevActivityTitles = [];  // Initialize previous activities if not already done
+        } else {
+            req.session.prevActivityTitles.push(prevActivityTitle);
+            console.log("req.session.prevActivityTitles: " + req.session.prevActivityTitles)
+        }
+        
+
+        
+
+        // Generate random options if necessary
         if (!kidsAge || !interests || !playWith) {
             const randomOptions = getRandomOptions();
             kidsAge = kidsAge || randomOptions.age;  // Use provided or random age
@@ -69,12 +113,12 @@ exports.handleRecommendation = async (req, res) => {
             playWith = playWith || randomOptions.playWith;  // Use provided or random play with option
         }
 
-                // Use a default for time available if not provided
+        // Use a default for time available if not provided
         timeAvailable = timeAvailable || '1-2 hours';
 
-        console.log("prevActivityTitle: " + prevActivityTitle);
+        const response = await getResponse(kidsAge, timeAvailable, interests, playWith, req.session.attempts, req.session.prevActivityTitles );
+        
 
-        const response = await getResponse(kidsAge, timeAvailable, interests, playWith, attempts, prevActivityTitle);
         const formattedResponse = formatResponse(response);
         res.setHeader('Content-Type', 'text/html');
         res.send(formattedResponse);
@@ -83,6 +127,7 @@ exports.handleRecommendation = async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 };
+
 
 
 
