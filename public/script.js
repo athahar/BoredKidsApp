@@ -31,6 +31,7 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
     const customizeLink = document.getElementById('customizeLink');
     const mainFormDiv = document.getElementById('mainFormDiv');
     const headlineText = document.getElementById('headlineText');
+    const prevActivityTitle = document.getElementById('activityTitle') && document.getElementById('activityTitle').innerHTML || null;
     
     submitButton.disabled = true;
     customizeLink.style.display = 'none'; // Hide the customize link
@@ -68,7 +69,7 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ kidsAge, timeAvailable,interests,playWith,attempts })
+      body: JSON.stringify({ kidsAge, timeAvailable,interests,playWith,attempts, prevActivityTitle })
     });
     
     const data = await response.text();
