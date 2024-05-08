@@ -7,6 +7,14 @@ const openai = new OpenAI({
 });
 
 
+function getRandomWord() {
+  // Implement a function to get a random word from a list or generate one
+    const words = ["Ingeniously", "Originality", "Inventively", "Resourcefully", "Artistically", "Inspirationally", "Curiously", "Adventurously", "Inquisitively", "Pioneeringly", "Experimentally", "Improvisationally", "Unconventionally", "Innovatively", "Groundbreakingly", "Groundbreakingly", "Trailblazingly", "Visionarily", "Uncharted", "Pioneeringly"];
+  return words[Math.floor(Math.random() * words.length)];
+}
+
+
+
 /**
  * Calls the OpenAI API to generate a response based on provided parameters.
  * @param {string} kidsAge - Age group of the kids.
@@ -15,19 +23,31 @@ const openai = new OpenAI({
  * @param {string} playWith - Companions for the activity.
  * @returns {Promise<string>} - The generated activity suggestion.
  */
-async function getResponse(kidsAge, timeAvailable, interests, playWith) {
+async function getResponse(kidsAge, timeAvailable, interests, playWith, attempts) {
 
   
 
-    console.log('Calling getResponse with:', { kidsAge, timeAvailable, interests, playWith });
+
+
+    console.log('Calling getResponse with:', { kidsAge, timeAvailable, interests, playWith,attempts });
     try {
-        const prompt = `Generate the most fun, creative at-home activity for children to do when bored for the age ${kidsAge} and 
-    for an activity of ${timeAvailable} with interests in ${interests} and play with ${playWith}. 
-    It should return these elements ONLY formatted in HTML syntax, but provide inside a <div>, that can be embedded in the html page - the title of the activity, 
+    //     const prompt = `Generate a fun, creative activity for children for the age ${kidsAge} and 
+    // for an activity of ${timeAvailable} with interests in ${interests} and play with ${playWith}. 
+    // It should return these elements ONLY formatted in HTML syntax, but provide inside a <div>, that can be embedded in the html page - the title of the activity, 
+    // items needed, time for the activity, fun score and a messy score and a description of the activity 
+    // in steps. The fun score and messy score should be out of 5, and formatted example as: 3/5. 
+    // Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title".  Try count: ${attempts}`;
+
+
+    const randomWord = getRandomWord(); // Implement a function to get a random word
+    const prompt = `Generate a ${randomWord} fun activity for kids aged ${kidsAge} with ${timeAvailable} available focusing on ${interests} and play involving ${playWith}. It should return these elements ONLY formatted in HTML syntax, but provide inside a <div>, that can be embedded in the html page - the title of the activity, 
     items needed, time for the activity, fun score and a messy score and a description of the activity 
     in steps. The fun score and messy score should be out of 5, and formatted example as: 3/5. 
-    Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title".`;
+    Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title". 
+    Try count: ${attempts}`;        
 
+console.log("randomWord: " + randomWord);
+console.log("prompt: " + prompt);
 
         const response = await openai.chat.completions.create({
             messages: [{ role: "system", content: prompt }],
@@ -49,6 +69,6 @@ module.exports = {
 
 
 
-//const prompt = `Generate a fun activity for kids aged ${kidsAge} with ${timeAvailable} available focusing on ${interests} and involving ${playWith}.`;
+
 
 

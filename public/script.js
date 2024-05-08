@@ -23,6 +23,8 @@ function toggleCustomize() {
 
 document.getElementById('mainForm').addEventListener('submit', async (event) => {
     event.preventDefault();
+    incrementAttempts(); // Increment the attempt count each time the form is submitted
+    const attempts = getAttempts(); // Get the updated attempt count
 
      // Disable the submit button and hide the customize link
     const submitButton = document.getElementById('mainCTA');
@@ -42,6 +44,8 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
     const timeAvailable = document.getElementById('timeAvailable').value;
     const interests = document.getElementById('interests').value;
     const playWith = document.getElementById('playWith').value;
+
+
 
    //tracking - only track prod events
     if (window.location.hostname !== 'localhost') {
@@ -64,7 +68,7 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ kidsAge, timeAvailable,interests,playWith })
+      body: JSON.stringify({ kidsAge, timeAvailable,interests,playWith,attempts })
     });
     
     const data = await response.text();
@@ -105,3 +109,19 @@ document.querySelectorAll('.custom-select').forEach(function(select) {
 
 
 
+// Function to get the current number of attempts from local storage
+function getAttempts() {
+    const attempts = localStorage.getItem('searchAttempts');
+    return attempts ? parseInt(attempts, 10) : 0; // Parse the string to an integer, defaulting to 0 if not found
+}
+
+// Function to increment the attempt count in local storage
+function incrementAttempts() {
+    const currentAttempts = getAttempts();
+    localStorage.setItem('searchAttempts', currentAttempts + 1);
+}
+
+// Function to reset attempts (if needed, e.g., per session/day)
+function resetAttempts() {
+    localStorage.setItem('searchAttempts', 0);
+}

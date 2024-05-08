@@ -59,7 +59,7 @@ function getRandomOptions() {
 
 exports.handleRecommendation = async (req, res) => {
     try {
-        let { kidsAge, timeAvailable, interests, playWith } = req.body;
+        let { kidsAge, timeAvailable, interests, playWith, attempts } = req.body;
 
          // Generate random options if necessary
         if (!kidsAge || !interests || !playWith) {
@@ -73,7 +73,7 @@ exports.handleRecommendation = async (req, res) => {
         timeAvailable = timeAvailable || '1-2 hours';
 
 
-        const response = await getResponse(kidsAge, timeAvailable, interests, playWith);
+        const response = await getResponse(kidsAge, timeAvailable, interests, playWith, attempts);
         const formattedResponse = formatResponse(response);
         res.setHeader('Content-Type', 'text/html');
         res.send(formattedResponse);
