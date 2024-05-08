@@ -4,8 +4,8 @@
   "description": "A Node.js app to provide fun and educational activities for kids based on various parameters using the OpenAI API.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "npx nodemon index.js",
+    "dev": "npx nodemon index.js"
   },
   "repository": {
     "type": "git",

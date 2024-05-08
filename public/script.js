@@ -6,6 +6,18 @@ function toggleCustomize() {
 }
 
 
+// add to home screen code
+
+// document.getElementById('saveAppBtn').addEventListener('click', function() {      
+//     console.log("hello....saveAppBtn")
+//       var popover = document.getElementById('instructionPopover');
+//       popover.style.display = 'block';      
+//       setTimeout(function() {
+//         popover.style.display = 'none';      
+//       }, 4000); // This will hide the popover after 4 seconds
+//     });
+
+
 
 // GET RECOMMENDAATION submit call
 
@@ -25,10 +37,23 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
     document.getElementById('container').style.minHeight = 'auto';
 
 
+
     const kidsAge = document.getElementById('kidsAge').value;
     const timeAvailable = document.getElementById('timeAvailable').value;
     const interests = document.getElementById('interests').value;
     const playWith = document.getElementById('playWith').value;
+
+   //tracking - only track prod events
+    if (window.location.hostname !== 'localhost') {
+      const eventProperties = {
+              kidsAge: kidsAge,
+              timeAvailable: timeAvailable,
+              interests: interests,
+              playWith: playWith
+          };
+          window.amplitude.track('Search recommendations', eventProperties);
+    }
+
     
     const responseDiv = document.getElementById('response');
     responseDiv.innerHTML = '<p class="feedback" style="font-size:1.4em; padding:80px 0px 160px 0px;"><img src="fidgetspinner.gif"/><br>Scavenger hunting for fun...</p>';
@@ -77,18 +102,6 @@ adjustSelectWidth();
 document.querySelectorAll('.custom-select').forEach(function(select) {
   select.addEventListener('change', adjustSelectWidth);
 });
-
-
-
-// add to home screen code
-
-document.getElementById('saveAppBtn').addEventListener('click', function() {      
-      var popover = document.getElementById('instructionPopover');
-      popover.style.display = 'block';      
-      setTimeout(function() {
-        popover.style.display = 'none';      
-      }, 4000); // This will hide the popover after 4 seconds
-    });
 
 
 
