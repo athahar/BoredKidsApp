@@ -32,7 +32,7 @@ const formatResponse = (response) => {
 function getRandomOptions() {
     const ageRanges = ["less than 2 years", "2 to 4 years", "4 to 8 years", "9 to 12 years", "12+ years"];
     const interests = [
-        "Incredible Arts & Crafts", "Yummy Tasty Unique Baking", "Amazing Board Games & Puzzles", "Exhilarating Building & Constructing",
+        "Incredible Arts & Crafts", "Yummy Tasty Unique Baking", "Exhilarating Building & Constructing",
         "Captivating Drama & Acting", "Exhilarating Lego", "Marvelous Music & Dance", "Incredible Reading & Story Telling",
         "Breathtaking Sports & Physical games", "Captivating Science Experiments", "Captivating STEM activity", "Thrilling Outdoor Adventure"
     ];

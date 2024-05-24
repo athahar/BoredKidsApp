@@ -1,6 +1,6 @@
 function toggleCustomize() {
     var customOptions = document.getElementById('custom-options');
-    var linkText = document.getElementById('customizeLink');
+    // var linkText = document.getElementById('customizeLink');
     customOptions.style.display = customOptions.style.display === 'inline' ? 'none' : 'inline';
     linkText.textContent= linkText.textContent === 'more options' ? 'hide options' : 'more options';
 }
@@ -28,13 +28,13 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
 
      // Disable the submit button and hide the customize link
     const submitButton = document.getElementById('mainCTA');
-    const customizeLink = document.getElementById('customizeLink');
+    // const customizeLink = document.getElementById('customizeLink');
     const mainFormDiv = document.getElementById('mainFormDiv');
     const headlineText = document.getElementById('headlineText');
     const prevActivityTitle = document.getElementById('activityTitle') && document.getElementById('activityTitle').innerHTML || null;
     
     submitButton.disabled = true;
-    customizeLink.style.display = 'none'; // Hide the customize link
+    // customizeLink.style.display = 'none'; // Hide the customize link
     mainFormDiv.style.display = 'none'; // Hide the main form div
     headlineText.style.display = 'none';
     document.getElementById('container').style.minHeight = 'auto';
@@ -76,7 +76,7 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
 
     // Re-enable the button and show the customize link again
     submitButton.disabled = false;
-    customizeLink.style.display = ''; // Show the customize link
+    // customizeLink.style.display = ''; // Show the customize link
     mainFormDiv.style.display = ''; // Show the main form div
 
 

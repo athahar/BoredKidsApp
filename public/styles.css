@@ -113,9 +113,6 @@ select option:focus{
 }
 
 .customize-link {
-  color: #808080;
-  text-decoration: underline;
-  cursor: pointer;
   display: block;
   font-size: 0.9em;
   margin-bottom: 36px;
