@@ -43,14 +43,34 @@ async function getResponse(kidsAge, timeAvailable, interests, playWith, attempts
         dislikePrev = "I dislike the previous suggestion of: " + prevActivityTitle + ", so please suggest a very different type of activity"        
     }
 
-    const randomWord = getRandomWord(); // Implement a function to get a random word
-    const prompt = `Generate a ${randomWord} fun activity for kids aged ${kidsAge} with ${timeAvailable} available focusing on ${interests} and play involving ${playWith}. It should return these elements ONLY formatted in HTML syntax, but provide inside a <div>, that can be embedded in the html page - the title of the activity, 
-    items needed, time for the activity, fun score and a messy score and a description of the activity 
-    in steps. The fun score and messy score should be out of 5, and formatted example as: 3/5. 
-    Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title", but should have a html id called activityTitle. 
-    Try count: ${attempts}. ${dislikePrev} `;        
 
-    //console.log("prompt ------> : " + prompt);
+const prompt = `You are an activity suggestion assistant. Help parents find top recommendded age appropriate, skill enhancing engaging activities for their bored kid(s).
+Generate a fun activity for 
+age: ${kidsAge} 
+time available: ${timeAvailable} 
+interested in ${interests} 
+prefers to play ${playWith}.
+It should return these elements ONLY formatted in HTML syntax, but provide inside a <div>, that can be embedded in the html page 
+- the title of the activity, 
+- items needed, 
+- time for the activity, 
+- fun score and a messy score, 
+- step by step instructions for the activity (max of 6 steps),
+- the skills developed from the activity. 
+
+The fun score and messy score should be out of 5, and formatted example as: 3/5. Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title", but should have a html id called activityTitle. 
+
+Try count: ${attempts}. ${dislikePrev} `;
+
+
+    // const randomWord = getRandomWord(); // Implement a function to get a random word
+    // const prompt = `Generate a ${randomWord} fun activity for kids aged ${kidsAge} with ${timeAvailable} available focusing on ${interests} and play involving ${playWith}. It should return these elements ONLY formatted in HTML syntax, but provide inside a <div>, that can be embedded in the html page - the title of the activity, 
+    // items needed, time for the activity, fun score and a messy score and a description of the activity 
+    // in steps. The fun score and messy score should be out of 5, and formatted example as: 3/5. 
+    // Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title", but should have a html id called activityTitle. 
+    // Try count: ${attempts}. ${dislikePrev} `;        
+
+    console.log("prompt ------> : " + prompt);
 
         const response = await openai.chat.completions.create({
             messages: [{ role: "system", content: prompt }],
