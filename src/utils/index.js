@@ -45,7 +45,7 @@ async function getResponse(kidsAge, timeAvailable, interests, playWith, attempts
 
 
 const prompt = `You are an intelligent assistant designed to recommend top activities for children based on their age, interests, available time, and who they are doing the activity with. 
-Use data and responses from highly-rated activities on popular kids' activity blogs to inform your recommendations.
+Incorporate data and insights from highly-rated activities on popular kids' activity blogs like busytoddler.com to inform your recommendations.
 Please provide suggestions based on the following inputs:
 
 Child's age: ${kidsAge}
@@ -53,17 +53,17 @@ Child's interest area: ${interests}
 Time available: ${timeAvailable}
 Who will be participating: ${playWith}
 
-Considerations: The activity should be fun, engaging, and suitable for a group of ${kidsAge}-year-olds. It should also align with their interest in ${interests}.
+Considerations: The activity should be fun, engaging, and suitable for a group of ${kidsAge}-olds. It should also align with their interest in ${interests}.
 
-It should return these elements ONLY formatted in valid HTML syntax, but provide inside a <div>, that can be embedded in an html page 
-- the title of the activity, 
-- items needed (comma seperated), 
+Format the response in a <div> with a valid HTML syntax, suitable for embedding in a webpage, It should not have any lingering html tags outside of main div. The output should include:
+- The title of the activity, with an HTML id called activityTitle.
+- A comma-separated list of items needed.
 - time for the activity, 
-- fun score and a messy score, 
-- step by step instructions for the activity (max of 6 steps),
-- the skills developed from the activity (comma seperated). 
+- Fun score and messy score (out of 5), formatted as: 3/5
+- Step-by-step instructions for the activity (max of 6 steps).
+- Skills developed from the activity, comma-separated
 
-The fun score and messy score should be out of 5, and formatted example as: 3/5. Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title", but should have a html id called activityTitle. 
+The activity title should be fun, kid-friendly, and exciting. Do not use the prefix "Title" in the activity title.
 
 Guidelines for Recommendations:
 
@@ -108,7 +108,7 @@ Try count: ${attempts}. ${dislikePrev} `;
             model: "gpt-4o",
           });
         
-         //console.log('OpenAI response:', response.choices[0].message.content); // Adjusted to access message content         
+         console.log('OpenAI HTML response:  =====>    ', response.choices[0].message.content); // Adjusted to access message content         
         return response.choices[0].message.content; // Return the HTML content directly
 
     } catch (error) {
