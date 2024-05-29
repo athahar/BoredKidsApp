@@ -175,6 +175,27 @@ footer{
   display:inline-block;
 }
 
+footer p {
+  margin: 5px 0;
+}
+
+
+.social-links {
+  margin-top: 10px;
+}
+
+.social-links a {
+  color: #333;
+  font-size: 24px;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #666;
+}
+
+
 hr{
   color: #666;
 }

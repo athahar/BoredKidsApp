@@ -29,11 +29,12 @@
     <meta property="twitter:image" content="https://boredkids.app/images/preview.jpg">
 
     <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <title>BoredKids</title>
 </head>
 <body>  
         <div class="header">  
-          <h1 class="appName"><a href="https://boredkids.app/" style="text-decoration: none;color: #000;">BoredKids</a></h1>
+          <h1 class="appName"><a href="https://boredkids.app/" style="text-decoration: none;color: #000;">BoredKids</a></h1>          
         </div>
         <div id="container" class="container">
           <div id="response" class="response-container">
@@ -41,7 +42,7 @@
           <div id="mainFormDiv">
             <center>
               <div id="headlineText" style="padding-top:40px;">
-                <h1>Spot a bored kid?</h1>
+                <h2>Kids Bored? Spark their creativity. </h2>                
               </div>
               <form id="mainForm" method="POST" action="/recommendations">
                 <div class="conversationalContent">
@@ -117,10 +118,19 @@
     <script src="/script.js"></script>
 </body>
 <footer>
-    <p>Made with 💛 by <a href="https://twitter.com/athahar" target="_blank">@athahar</a></p>
-    <p>&copy; 2024 BoredKids App. All rights reserved.</p>
+    <p>Made with 💛 by <a href="https://twitter.com/athahar" target="_blank">@athahar</a> | <a href="mailto:boredkidsapp@gmail.com?subject=Feedback" id="email"  target="_blank">Any suggestions to improve?</a>
+    </div></p>    
 
-    <div style="margin:48px 0px;">
+    <!-- <div class="social-links">
+    <a href="https://instagram.com/boredkids.app" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://twitter.com/boredkidsapp" target="_blank">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </div> -->
+
+    <!-- <div style="margin:48px 0px;"> -->
         <!-- <div class="save-app-btn" style="margin-bottom:24px;">            
             <button id="saveAppBtn">Save app on phone</button>
             <div id="instructionPopover" style="display:none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 10px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000;">
@@ -130,8 +140,7 @@
               </p>
             </div>
         </div> -->
-        <a href="mailto:boredkidsapp@gmail.com?subject=Feedback" id="email"  target="_blank">Pls tell us how we can make this better </a>
-    </div>
+        
 
     <script src="https://cdn.amplitude.com/libs/analytics-browser-2.7.1-min.js.gz"></script><script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.2.0-min.js.gz"></script><script src="https://cdn.amplitude.com/libs/plugin-autocapture-browser-0.9.0-min.js.gz"></script>
     <script>
@@ -143,6 +152,7 @@
 
     <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="boredkids" data-color="#000000" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
 
+    <p>&copy; 2024 BoredKids App. All rights reserved.</p>
 
 </footer>
 </html>

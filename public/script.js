@@ -61,7 +61,7 @@ document.getElementById('mainForm').addEventListener('submit', async (event) => 
 
     
     const responseDiv = document.getElementById('response');
-    responseDiv.innerHTML = '<p class="feedback" style="font-size:1.4em; padding:80px 0px 160px 0px;"><img src="fidgetspinner.gif"/><br>Scavenger hunting for fun...</p>';
+    responseDiv.innerHTML = '<p class="feedback" style="font-size:1.4em; padding:80px 0px 160px 0px;"><img src="fidgetspinner.gif"/><br>Scavenger hunting  ... Let\'s ignite their imagination</p>';
 
 
     const response = await fetch('/recommendations', {

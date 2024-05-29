@@ -52,15 +52,17 @@ async function getResponse(kidsAge, timeAvailable, interests, playWith, attempts
         - Suggest materials that are easy to find or commonly available.
         - Provide clear and concise instructions for parents.
 
-        Format the response in a <div> with valid HTML syntax, suitable for embedding in a webpage. It should not have any lingering HTML tags outside of the main div. The output should include:
+        Format the response in a <div> with valid HTML syntax, suitable for embedding in a webpage. It should not have any lingering HTML tags outside of the main div. The output should have following sections each with a section heading in bold:
 
-        - title of the activity, with an HTML id called "activityTitle".
-        - List of items needed(comma-separated).
+        - Title of the activity, with an HTML id called "activityTitle".
+        - Items needed(comma-separated).
         - Time for the activity.
-        - Fun score (out of 5), formatted as: "3/5".
-        - Messy score (out of 5), formatted as: "3/5".
-        - Step-by-step instructions for the activity (max of 6 steps).
-        - Skills developed from the activity, comma-separated.
+        - Fun score (out of 5 formatted as: "3/5")
+        - Messy score (out of 5 formatted as: "3/5")
+        - Instructions (max of 6 steps for the activity).
+        - Skills developed (from the activity, comma-separated)
+
+        make sure the response for Time for the activity, Fun score & Messy score have the results in the same line as title.
 
         The activity title should be fun, kid-friendly, and exciting. Do not use the prefix "Title" in the activity title.`;
 
@@ -73,7 +75,6 @@ async function getResponse(kidsAge, timeAvailable, interests, playWith, attempts
         Try count: ${attempts}. ${dislikePrev}`;
         
      
-
     console.log("systemPrompt ------> : " + systemPrompt);
     console.log("userPrompt ------> : " + userPrompt);
 
