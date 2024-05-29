@@ -43,70 +43,53 @@ async function getResponse(kidsAge, timeAvailable, interests, playWith, attempts
         dislikePrev = "I dislike the previous suggestion of: " + prevActivityTitle + ", so please suggest a very different type of activity"        
     }
 
+      const systemPrompt = `You are an intelligent assistant designed to recommend top activities for children based on their age, interests, available time, and who they are doing the activity with. Incorporate data and insights from highly-rated activities on popular kids' activity blogs like busytoddler.com, pbskids, natgeo, etc to inform your recommendations.
 
-const prompt = `You are an intelligent assistant designed to recommend top activities for children based on their age, interests, available time, and who they are doing the activity with. 
-Incorporate data and insights from highly-rated activities on popular kids' activity blogs like busytoddler.com to inform your recommendations.
-Please provide suggestions based on the following inputs:
+        Guidelines for Recommendations:
+        - Ensure activities are age-appropriate.
+        - Align activities with the child's interests.
+        - Consider the time available for the activity.
+        - Suggest materials that are easy to find or commonly available.
+        - Provide clear and concise instructions for parents.
 
-Child's age: ${kidsAge}
-Child's interest area: ${interests}
-Time available: ${timeAvailable}
-Who will be participating: ${playWith}
+        Format the response in a <div> with valid HTML syntax, suitable for embedding in a webpage. It should not have any lingering HTML tags outside of the main div. The output should include:
 
-Considerations: The activity should be fun, engaging, and suitable for a group of ${kidsAge}-olds. It should also align with their interest in ${interests}.
+        - title of the activity, with an HTML id called "activityTitle".
+        - List of items needed(comma-separated).
+        - Time for the activity.
+        - Fun score (out of 5), formatted as: "3/5".
+        - Messy score (out of 5), formatted as: "3/5".
+        - Step-by-step instructions for the activity (max of 6 steps).
+        - Skills developed from the activity, comma-separated.
 
-Format the response in a <div> with a valid HTML syntax, suitable for embedding in a webpage, It should not have any lingering html tags outside of main div. The output should include:
-- The title of the activity, with an HTML id called activityTitle.
-- A comma-separated list of items needed.
-- time for the activity, 
-- Fun score and messy score (out of 5), formatted as: 3/5
-- Step-by-step instructions for the activity (max of 6 steps).
-- Skills developed from the activity, comma-separated
+        The activity title should be fun, kid-friendly, and exciting. Do not use the prefix "Title" in the activity title.`;
 
-The activity title should be fun, kid-friendly, and exciting. Do not use the prefix "Title" in the activity title.
+        const userPrompt = ` Please provide suggestions based on the following inputs:
+        Child's age: ${kidsAge}
+        Child's interest area: ${interests}
+        Time available: ${timeAvailable}
+        Who will be participating: ${playWith}.
+      
+        Try count: ${attempts}. ${dislikePrev}`;
+        
+     
 
-Guidelines for Recommendations:
-
-- Ensure activities are age-appropriate.
-- Align activities with the child's interests.
-- Consider the time available for the activity.
-- Suggest materials that are easy to find or commonly available.
-- Provide clear and concise instructions for parents.
-
-Try count: ${attempts}. ${dislikePrev} `;
-
-
-
-
-// const prompt = `You are an activity suggestion assistant. Help parents find top recommendded, age appropriate, skill enhancing engaging activities for their 
-// kid of age: ${kidsAge}, keep them engaged busy for ${timeAvailable} with ${interests}, they can do ${playWith}.
-// It should return these elements ONLY formatted in HTML syntax, but provide inside a <div>, that can be embedded in the html page 
-// - the title of the activity, 
-// - items needed (comma seperated), 
-// - time for the activity, 
-// - fun score and a messy score, 
-// - step by step instructions for the activity (max of 6 steps),
-// - the skills developed from the activity. 
-
-// The fun score and messy score should be out of 5, and formatted example as: 3/5. Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title", but should have a html id called activityTitle. 
-
-// Try count: ${attempts}. ${dislikePrev} `;
+    console.log("systemPrompt ------> : " + systemPrompt);
+    console.log("userPrompt ------> : " + userPrompt);
 
 
-    // const randomWord = getRandomWord(); // Implement a function to get a random word
-    // const prompt = `Generate a ${randomWord} fun activity for kids aged ${kidsAge} with ${timeAvailable} available focusing on ${interests} and play involving ${playWith}. It should return these elements ONLY formatted in HTML syntax, but provide inside a <div>, that can be embedded in the html page - the title of the activity, 
-    // items needed, time for the activity, fun score and a messy score and a description of the activity 
-    // in steps. The fun score and messy score should be out of 5, and formatted example as: 3/5. 
-    // Activity title should be fun, kid-friendly and feel exciting. the title shouldn't have the prefix "Title", but should have a html id called activityTitle. 
-    // Try count: ${attempts}. ${dislikePrev} `;        
-
-    console.log("prompt ------> : " + prompt);
-
-        const response = await openai.chat.completions.create({
-            messages: [{ role: "system", content: prompt }],
-            // model: "gpt-3.5-turbo",
-            model: "gpt-4o",
-          });
+    const response = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt }
+      ]
+  });
+        // const response = await openai.chat.completions.create({
+        //     messages: [{ role: "system", content: prompt }],
+        //     // model: "gpt-3.5-turbo",
+        //     model: "gpt-4o",
+        //   });
         
          console.log('OpenAI HTML response:  =====>    ', response.choices[0].message.content); // Adjusted to access message content         
         return response.choices[0].message.content; // Return the HTML content directly
